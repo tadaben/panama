@@ -57,7 +57,7 @@ var ort = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/ort/{z}/{x}/{y}.jpg'
 
 //<!--tileLayer.addTo(map); -->
 
-$.getJSON("./panamaalljapana.geojson", function(data) {
+$.getJSON("./panamaalljapan.geojson", function(data) {
     var geojsonsonota = L.geoJson(data, {
         onEachFeature: function (feature, layer) {
             layer.bindPopup("住所（漢字に変換後）：<br>"+ feature.properties.jyusyo + "<br>住所（元データ）：<br>"+ feature.properties.hontai+ "<br> Officer（表示される名前）：<br>" + feature.properties.officer + "<br>備考：<br>"+ feature.properties.bikou);
