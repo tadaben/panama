@@ -72,35 +72,6 @@ $.getJSON("./panamaalljapana.geojson", function(data) {
 });
 
 
-$.getJSON("./json/panamaallkansai.geojson", function(data) {
-    var geojsonallkansai = L.geoJson(data, {
-        onEachFeature: function (feature, layer) {
-            layer.bindPopup("住所（漢字に変換後）：<br>"+ feature.properties.jyusyo + "<br>住所（元データ）：<br>"+ feature.properties.hontai+ "<br> Officer（表示される名前）：<br>" + feature.properties.officer + "<br>備考：<br>"+ feature.properties.bikou);
-        }
-    });
-    geojsonallkansai.addTo(map);
-});
-
-
-$.getJSON("./json/panamaalltokyo.geojson", function(data) {
-    var geojsonalltokyo = L.geoJson(data, {
-        onEachFeature: function (feature, layer) {
-            layer.bindPopup("住所（漢字に変換後）：<br>"+ feature.properties.jyusyo + "<br>住所（元データ）：<br>"+ feature.properties.hontai+ "<br> Officer（表示される名前）：<br>" + feature.properties.officer + "<br>備考：<br>"+ feature.properties.bikou);
-        }
-    });
-    geojsonalltokyo.addTo(map);
-});
-
-
-$.getJSON("./json/panamaallkanto.geojson", function(data) {
-    var geojsonallkanto = L.geoJson(data, {
-        onEachFeature: function (feature, layer) {
-            layer.bindPopup("住所（漢字に変換後）：<br>"+ feature.properties.jyusyo + "<br>住所（元データ）：<br>"+ feature.properties.hontai+ "<br> Officer（表示される名前）：<br>" + feature.properties.officer + "<br>備考：<br>"+ feature.properties.bikou);
-        }
-    });
-    geojsonallkanto.addTo(map);
-});
-
 var baseMaps = {
       "地理院地図": std
       ,"OpenStreetMap":osm
