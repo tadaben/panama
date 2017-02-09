@@ -3,12 +3,8 @@
     <head>
         <meta charset='utf-8' />
         <title>パナマ文書掲載者日本地図</title>
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
+        <link rel="stylesheet" href="https://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
 
-
-        <!--[if lte IE 8]>
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.ie.css" />
-        <![endif]-->
 
 	<link rel="stylesheet" href="./css/leaflet.extra-markers.min.css">
 
@@ -28,7 +24,7 @@
 <body>
 <h3>あなたの隣りのパナマ文書掲載者</h3>
 <div id="map"></div>
-        <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+        <script src="https://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
 
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	
@@ -38,23 +34,23 @@
 //Tile Map Serviceの指定（OpenStreetMap）
 var osm =
 L.tileLayer(
-	"http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+	"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
 	{
-		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
+		attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a>',
 		maxZoom: 18
 	});
 
 //Tile Map Serviceの指定（地理院）    
 var std = 
 L.tileLayer(
-		"http://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
-		attribution: '<a href="http://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>',
+		"https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
+		attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>',
 		maxZoom: 18
 	});
 
 //Tile Map オルソ画像（地理院）
-var ort = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/ort/{z}/{x}/{y}.jpg', {
-	attribution: '<a href="http://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル（オルソ画像）</a>',
+var ort = L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/ort/{z}/{x}/{y}.jpg', {
+	attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル（オルソ画像）</a>',
 	maxZoom: 18
 });
 
