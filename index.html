@@ -1,10 +1,124 @@
-<!doctype html>
-<html>
- <head>
-   <title>テスト</title>
- </head>
- <body>
-   <h2>これは、テストページです（改変後）。</h2>
- </body>
+<!DOCTYPE html>
+<html lang='ja'>
+    <head>
+        <meta charset='utf-8' />
+        <title>パナマ文書掲載者日本地図</title>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
+
+
+        <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.ie.css" />
+        <![endif]-->
+
+	<link rel="stylesheet" href="./css/leaflet.extra-markers.min.css">
+
+	<style>
+	html, body{
+		margin: 0px;
+		padding: 0px;
+	}
+	html, body, #map {
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+</head>
+
+<body>
+<h3>あなたの隣りのパナマ文書掲載者</h3>
+<div id="map"></div>
+        <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	
+        <script type="text/javascript">
+
+
+//Tile Map Serviceの指定（OpenStreetMap）
+var osm =
+L.tileLayer(
+	"http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+	{
+		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
+		maxZoom: 18
+	});
+
+//Tile Map Serviceの指定（地理院）    
+var std = 
+L.tileLayer(
+		"http://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
+		attribution: '<a href="http://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>',
+		maxZoom: 18
+	});
+
+//Tile Map オルソ画像（地理院）
+var ort = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/ort/{z}/{x}/{y}.jpg', {
+	attribution: '<a href="http://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル（オルソ画像）</a>',
+	maxZoom: 18
+});
+
+
+
+//tileLayer.addTo(map);
+
+$.getJSON("./panamaalljapana.geojson", function(data) {
+    var geojsonsonota = L.geoJson(data, {
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup("住所（漢字に変換後）：<br>"+ feature.properties.jyusyo + "<br>住所（元データ）：<br>"+ feature.properties.hontai+ "<br> Officer（表示される名前）：<br>" + feature.properties.officer + "<br>備考：<br>"+ feature.properties.bikou);
+        }
+    });
+    geojsonsonota.addTo(map);
+});
+
+
+$.getJSON("./json/panamaallkansai.geojson", function(data) {
+    var geojsonallkansai = L.geoJson(data, {
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup("住所（漢字に変換後）：<br>"+ feature.properties.jyusyo + "<br>住所（元データ）：<br>"+ feature.properties.hontai+ "<br> Officer（表示される名前）：<br>" + feature.properties.officer + "<br>備考：<br>"+ feature.properties.bikou);
+        }
+    });
+    geojsonallkansai.addTo(map);
+});
+
+
+$.getJSON("./json/panamaalltokyo.geojson", function(data) {
+    var geojsonalltokyo = L.geoJson(data, {
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup("住所（漢字に変換後）：<br>"+ feature.properties.jyusyo + "<br>住所（元データ）：<br>"+ feature.properties.hontai+ "<br> Officer（表示される名前）：<br>" + feature.properties.officer + "<br>備考：<br>"+ feature.properties.bikou);
+        }
+    });
+    geojsonalltokyo.addTo(map);
+});
+
+
+$.getJSON("./json/panamaallkanto.geojson", function(data) {
+    var geojsonallkanto = L.geoJson(data, {
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup("住所（漢字に変換後）：<br>"+ feature.properties.jyusyo + "<br>住所（元データ）：<br>"+ feature.properties.hontai+ "<br> Officer（表示される名前）：<br>" + feature.properties.officer + "<br>備考：<br>"+ feature.properties.bikou);
+        }
+    });
+    geojsonallkanto.addTo(map);
+});
+
+var baseMaps = {
+      "地理院地図": std
+      ,"OpenStreetMap":osm
+      ,"地理院オルソ画像":ort
+      };
+
+var map = L.map('map',{
+    layers: [std]
+    ,center: [34.77929　　, 135.84209]
+    ,zoom: 07});
+
+// レイヤコントロール
+var controls = L.control.layers(baseMaps).addTo(map);
+
+	 
+</script>
+
+
+</body>
 </html>
 
