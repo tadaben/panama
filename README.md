@@ -10,4 +10,4 @@
 * officer---パナマ文書で表示されるofficerをそのまま表示
 * bikou---備考欄
 
-#### [日本地図を表示](https://tadaben.github.io/panama/)してその上にPINを表示させています。(PINをクリックすると「property」の内容を表示
+####　このGITHUB上に[日本地図を表示](https://tadaben.github.io/panama/)、その上にPINを打ちました。(PINをクリックすると「property」の内容表示）
